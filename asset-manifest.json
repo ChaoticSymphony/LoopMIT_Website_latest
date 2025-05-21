@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/LoopMIT_Website_latest/static/css/main.e9efc582.css",
-    "main.js": "/LoopMIT_Website_latest/static/js/main.c4ce5128.js",
+    "main.css": "/LoopMIT_Website_latest/static/css/main.38490157.css",
+    "main.js": "/LoopMIT_Website_latest/static/js/main.e5d27313.js",
     "static/media/Prabhanjana P.jpg": "/LoopMIT_Website_latest/static/media/Prabhanjana P.36b7cabff6f255e5af3d.jpg",
     "static/media/pratham.jpg": "/LoopMIT_Website_latest/static/media/pratham.68d02a3bdb89396edd1d.jpg",
     "static/media/earth.jpg": "/LoopMIT_Website_latest/static/media/earth.a08c82a61f5bf923991e.jpg",
@@ -41,11 +41,11 @@
     "static/media/emworks.png": "/LoopMIT_Website_latest/static/media/emworks.18e117c637530b96957d.png",
     "static/media/solidworks.png": "/LoopMIT_Website_latest/static/media/solidworks.2485d389c9d2df4756ea.png",
     "index.html": "/LoopMIT_Website_latest/index.html",
-    "main.e9efc582.css.map": "/LoopMIT_Website_latest/static/css/main.e9efc582.css.map",
-    "main.c4ce5128.js.map": "/LoopMIT_Website_latest/static/js/main.c4ce5128.js.map"
+    "main.38490157.css.map": "/LoopMIT_Website_latest/static/css/main.38490157.css.map",
+    "main.e5d27313.js.map": "/LoopMIT_Website_latest/static/js/main.e5d27313.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9efc582.css",
-    "static/js/main.c4ce5128.js"
+    "static/css/main.38490157.css",
+    "static/js/main.e5d27313.js"
   ]
 }
