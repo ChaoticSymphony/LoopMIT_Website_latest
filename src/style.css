@@ -186,14 +186,17 @@
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background-color: #fff;
-  height: 85%; /* Ensure all boxes have the same height */
+  height: 100%; /* Ensure all boxes have the same height */
 
 }
+
+
+
 
 .work-img {
   display: block;
   overflow: hidden;
-  height: 250px; /* Set a fixed height for all image containers */
+  height: 150px; /* Set a fixed height for all image containers */
 }
 
 .work-img img {
@@ -1060,8 +1063,13 @@ ABOUT
 PORTFOLIO
 */
 
+
+
+
+
+
 .work-box {
-  margin-bottom: 3rem;
+  margin-bottom: 0.5rem;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background-color: #fff;
@@ -1086,7 +1094,7 @@ PORTFOLIO
 }
 
 .work-content {
-  padding: 2rem 3% 1rem 4%;
+   padding: 1rem 8% 0rem;
 }
 
 .work-content .w-more {
@@ -1095,12 +1103,14 @@ PORTFOLIO
   padding-bottom: 3vh;
 }
 
+trying out different colors 
 .work-content .w-more .w-ctegory {
-  font-size: medium;
-  color: #0078ff;
+  font-size: 0.85rem;
+  color: #0e0e0f89;
 }
+
 .dark .work-content .w-more .w-ctegory {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #bfcac2;
 }
 
@@ -1120,7 +1130,7 @@ PORTFOLIO
 
 .w-title {
   font-weight: bolder;
-  font-size: 1.2rem;
+  font-size: 0.85rem;
 }
 
 /*

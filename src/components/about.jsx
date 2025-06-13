@@ -39,22 +39,23 @@ class About extends React.Component {
                     </div>
           <Animation1 direction="right" delay={0.2}>
                     <div className="row about-content-row">
-                      <div className="col-md-6 about-text-col">
+                      <div className="col-md-12 about-text-col">
                         <div className="about-me pt-4 pt-md-0">
                           {this.state.about_me.map(content => {
                             return (
-                              <p className="lead about-paragraph" key={content.id}>
+                              <p className="subtitle-a" key={content.id}>
                                 {content.content}
                               </p>
                             );
                           })}
                         </div>
                       </div>
-                      <div className="col-md-6 about-image-col">
+                      {/* The Image part */}
+                      {/* <div className="col-md-6 about-image-col">
                         <div className="pod-image-container">
                           <img src={Pod}  className="pod-image responsive-image" />
                         </div>
-                      </div>
+                      </div> */}
                     </div>
           </Animation1>
                   </div>

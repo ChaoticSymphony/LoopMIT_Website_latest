@@ -12,6 +12,7 @@ import cadfem from "../img/sponsor_pics/cadfem.png";
 import emworks from "../img/sponsor_pics/emworks.png";
 import janatics from "../img/sponsor_pics/janatics.png";
 import solidworks from "../img/sponsor_pics/solidworks.png";
+import honeycomb from "../img/sponsor_pics/honeycomb.jpg"
 
 //import "./Sponsors.css"; // We'll create this CSS file next
 
@@ -28,18 +29,18 @@ const sponsor = ({ logo, name, url }) => {
 };
   // Sample sponsors data - replace with your actual sponsors
   const sponsors = [
-    {
-      id: 1,
-      name: "Sponsor 1",
-      logo: mahe, // Replace with actual path to logo
-      url: "https://www.manipal.edu/mu.html"
-    },
-    {
-      id: 2,
-      name: "Sponsor 2",
-      logo: bossard, // Replace with actual path to logo
-      url: "https://www.bossard.com/in-en/"
-    },
+    // {
+    //   id: 1,
+    //   name: "Sponsor 1",
+    //   logo: mahe, // Replace with actual path to logo
+    //   url: "https://www.manipal.edu/mu.html"
+    // },
+    // {
+    //   id: 2,
+    //   name: "Sponsor 2",
+    //   logo: bossard, // Replace with actual path to logo
+    //   url: "https://www.bossard.com/in-en/"
+    // },
     {
       id: 3,
       name: "Sponsor 3",
@@ -86,13 +87,19 @@ const sponsor = ({ logo, name, url }) => {
       id: 10,
       name: "Sponsor 4",
       logo: emworks, // Replace with actual path to logo
-      url: "hhttps://www.emworks.com/"
+      url: "https://www.emworks.com/"
+    },
+    {
+      id: 11,
+      name: "Sponsor 4",
+      logo: honeycomb, // Replace with actual path to logo
+      url: "https://honeycombindia.com/"
     }
   ];
 
   return (
-    
-    <div className="container mt-6">
+  
+    <div className="container mt-6 sect-pt4" id="sponsors">
       <div className="row justify-content-center">
         <div className="col-12 text-center">
           <h3 className="title-a">Our Sponsors</h3>
@@ -102,7 +109,30 @@ const sponsor = ({ logo, name, url }) => {
           <div className="line-mf"></div>
         </div>
       </div>
-      
+      <Animation1 direction="left" delay={0.3}>
+        <div className="row justify-content-center align-items-center py-4">
+          
+            <div 
+              
+              className="col-12 mt-4 text-center"
+            >
+              <a 
+                href="https://www.bossard.com/in-en/"
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="d-block sponsor-link"
+              >
+                <img
+                  src={bossard}
+                  alt={`${sponsor.name} logo`}
+                  className="img-fluid mx-auto sponsor-logo"
+                  style={{ maxHeight: "100px"}}
+                />
+              </a>
+            </div>
+          
+        </div>
+      </Animation1>
       <Animation1 direction="left" delay={0.3}>
         <div className="row justify-content-center align-items-center py-4">
           {sponsors.map((sponsor) => (
@@ -120,7 +150,7 @@ const sponsor = ({ logo, name, url }) => {
                   src={sponsor.logo}
                   alt={`${sponsor.name} logo`}
                   className="img-fluid mx-auto sponsor-logo"
-                  style={{ maxHeight: "80px" }}
+                  style={{ maxHeight: "50px" }}
                 />
               </a>
             </div>

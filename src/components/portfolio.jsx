@@ -20,6 +20,7 @@ import prabhav from "../img/Member_pics/prabhav.jpg";
 import pratham from "../img/Member_pics/pratham.jpg";
 import shreyas from "../img/Member_pics/shreyas.jpg";
 import sohan from "../img/Member_pics/sohan.jpg";
+import default_pic from "../img/Member_pics/default.webp"
 
 class Portfolio extends React.Component {
   render() {
@@ -81,13 +82,13 @@ class Portfolio extends React.Component {
         image: aaron,
         name: "Aaron Mathew George",
         skills: "Electronics And Coding"
-      }//,
-      // {
-      //   id: 5,
-      //   image: stock,
-      //   name: "Joyjeet Adhikary",
-      //   skills: "Electronics And Coding"
-      // }
+      },
+       {
+         id: 5,
+         image: default_pic,
+         name: "Joyjeet Adhikary",
+         skills: "Electronics And Coding"
+       }
     ];
     const lnpTeamMembers = [
       
@@ -116,13 +117,13 @@ class Portfolio extends React.Component {
         image: pratham,
         name: "Pratham Mutalikdesai",
         skills: "Mechanical"
-      }//,
-      // {
-      //   id: 1,
-      //   image: stock,
-      //   name: "Sonali Sainik",
-      //   skills: "Mechanical"
-      // }
+      },
+       {
+         id: 1,
+         image: default_pic,
+         name: "Sonali Sainik",
+         skills: "Mechanical"
+       }
     ];
     const manTeamMembers = [
       
@@ -151,6 +152,7 @@ class Portfolio extends React.Component {
             </div>
           </div>
       
+      <Animation1 direction="right" delay={0.2}>
       <div className="row justify-content-center">
             {teamLeaders.map(member => (
               <TeamLeader
@@ -161,12 +163,13 @@ class Portfolio extends React.Component {
               />
             ))}
           </div>
-      
+      </Animation1>
+
         <div className="row justify-content-center">
         <h3 className="">Levitation And Propulsion</h3>
         </div>
         <hr></hr>
-        <Animation1 direction="right " delay={0.2}>
+        <Animation1 direction="left" delay={0.2}>
         <div className="row justify-content-center">
             {lnpTeamMembers.map(member => (
               <TeamMember 
@@ -199,7 +202,7 @@ class Portfolio extends React.Component {
         <h3 className="">Mechanical</h3>
         </div>
         <hr></hr>
-        <Animation1 direction="right" delay={0.2}>
+        <Animation1 direction="left" delay={0.2}>
       <div className="row justify-content-center">
             {mechTeamMembers.map(member => (
               <TeamMember
