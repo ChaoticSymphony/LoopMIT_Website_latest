@@ -1,3 +1,4 @@
+
 /* Add this to your existing CSS (style.css) */
 
 /* Add these new media queries for the specific screen sizes you mentioned */
@@ -57,6 +58,106 @@
     font-size: 1.3rem;
   }
 } */
+
+/* Achievements */
+.achievements{
+  margin-top: 10rem;
+}
+
+/* Back-to-top animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+.fadeIn { animation: fadeIn 0.3s forwards; }
+.fadeOut { animation: fadeOut 0.3s forwards; }
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* Preloader CSS */
+/* src/components/Preloader.css */
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #fff;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #f2f2f2;
+  border-top: 6px solid #0078ff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade animations for smooth transitions */
+@keyframes fadeInPre {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOutPre {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.fadeIn {
+  animation: fadeInPre 0.3s forwards;
+}
+
+.fadeOut {
+  animation: fadeOutPre 0.5s forwards;
+}
+
+
 
 /* Pod image styling */
 .pod-image-container {
@@ -276,7 +377,7 @@
 /* Then we add our specific media queries with high specificity selectors */
 @media (min-width: 768px) {
   .about-text-col, .about-image-col {
-    width: 50%;
+    width: 100%;
   }
 
   .responsive-image {
@@ -503,6 +604,7 @@ a:hover {
   height: 5px;
   background-color: #0078ff;
   margin: 0 auto;
+  margin-bottom: 2rem;
 }
 
 /* Title Left */
@@ -699,14 +801,14 @@ a:hover {
   z-index: 11;
 }
 
-.back-to-top i {
+/* .back-to-top i {
   padding-top: 12px;
   color: #fff;
-}
+} */
 
 /* Prelaoder */
 
-#preloader {
+/* #preloader {
   position: fixed;
   top: 0;
   left: 0;
@@ -753,11 +855,21 @@ a:hover {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
+} */
 
 /*
 NAVBAR
 */
+/* Smooth collapse transition */
+.navbar-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.navbar-collapse.show {
+  max-height: 1000px; 
+}
 
 .navbar-b {
   transition: all .5s ease-in-out;
@@ -832,6 +944,12 @@ NAVBAR
   color: #fff;
 }
 
+.othernavs.navbar-trans{
+  background-color: black;
+}
+
+
+
 .navbar-b.navbar-reduce {
   transition: all .5s ease-in-out;
   background-color: #fff;
@@ -864,6 +982,9 @@ NAVBAR
 
 .navbar-b.navbar-reduce .navbar-toggler span {
   background-color: #1B1B1B;
+}
+.dark .navbar-b.navbar-reduce .navbar-toggler span {
+  background-color: #f3e7e7;
 }
 
 .navbar-b .navbar-brand {
@@ -1383,3 +1504,229 @@ BUTTON
     bottom: 15px;
   }
 }
+
+.container {
+  max-width: 1140px !important;
+}
+
+/* Timeline CSS */
+
+/* timeline.css */
+.navspace {
+  margin-top: 5rem;
+}
+
+.timeline {
+  position: relative;
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin: 2rem;
+}
+
+.timeline-item.dark{
+  background-color: grey;
+}
+
+.timeline-badge {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  margin-left: 0.4rem;
+}
+
+
+.timeline-panel .card-body {
+  padding: 1rem;
+}
+
+.timeline-panel .card-title {
+  padding-top: 0.5rem;
+  font-weight: 600;
+  color: #20c997;
+}
+
+.timeline-panel .card-subtitle {
+  font-size: 0.9rem;
+}
+.card-subtitle{
+  color: #09521a89;
+  margin-top: 10px;
+  padding: 4px 8px;
+  font-weight: 500;
+  background-color: #5af27d89;
+  width: fit-content;
+  border-radius: 50px;
+}
+
+.dark .card-subtitle{
+  color: #e2e9e389;
+  background-color: #51e37589;
+}
+
+@media (max-width: 576px) {
+  
+
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline-badge {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-panel {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.carousel-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container{
+  max-height: 100%;
+  max-width: 80%;
+  
+}
+
+.image{
+  max-width: 100%;
+  height: 100%;
+  
+}
+
+
+.slick-prev:before,
+.slick-next:before {
+  color: black; /* or any color like white, #20c997, etc. */
+  font-size: 30px; /* optional: change size */
+  opacity: 1; /* make sure it's fully visible */
+}
+
+/* Dark mode */
+
+.dark .card {
+  background-color: #1e1e1e;
+  
+  color: #f0f0f0;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+.dark .card-body {
+  border-radius: 0.5rem;
+  background-color: #2a2a2a;
+  color: inherit;
+}
+
+.dark .card-title,
+.dark .card-text {
+  color: #f0f0f0;
+}
+
+
+/* Medium devices (≥768px) */
+@media (min-width: 768px) {
+  
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Hide until slick is ready */
+.slick-slider {
+  visibility: hidden;
+}
+
+/* Once slick applies this class, show carousel */
+.slick-slider.slick-initialized {
+  visibility: visible;
+}
+
+/* Image Slider */
+.embla {
+  max-width: 28rem;
+  margin: auto;
+  --slide-height: 19rem;
+  --slide-spacing: 1rem;
+  --slide-size: 100%;
+}
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+}
+.embla__slide__number {
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  width: 100%;
+  border-radius: 0.8rem;
+  height: auto;
+  user-select: none;
+}
+.embla__controls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+.embla__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+.embla__button {
+  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  width: 3.6rem;
+  height: 3.6rem;
+  z-index: 1;
+  border-radius: 50%;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.embla__button:disabled {
+  color: var(--detail-high-contrast);
+}
+.embla__button__svg {
+  width: 35%;
+  height: 35%;
+}
+
+

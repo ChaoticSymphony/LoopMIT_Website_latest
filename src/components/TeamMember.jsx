@@ -16,7 +16,7 @@ const TeamMember = ({ image, name, skills }) => {
           height: "100%", 
           objectFit: "cover", 
           objectPosition: "center" 
-        }} 
+        }}
       />
     </div>
     <div className="work-content">

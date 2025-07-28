@@ -67,7 +67,7 @@ const Contact = () => {
   const backgroundImage = darkMode ? pod2 : imageOverlay;
 
   return (
-    <section
+    <section id='contact'
       className="paralax-mf footer-paralax bg-image sect-mt4 route"
       style={{ backgroundImage: "url(" + backgroundImage + ")" }}
     >

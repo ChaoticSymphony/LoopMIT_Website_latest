@@ -1,30 +1,34 @@
-import React from 'react';
-import $ from 'jquery';
-import '../libs/easing.js'
+// src/components/BackToTop.jsx
+import React, { useEffect, useState } from 'react';
+import { animateScroll as scroll } from 'react-scroll';
+//import './BackToTop.css'; // Import your fadeIn/fadeOut animations here
 
-class BackToTop extends React.Component {
-    componentDidMount(){
-        $('.back-to-top').click(function(){
-            $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
-            return false;
-          });
-        window.addEventListener('scroll', ()=>{
-            if(window.pageYOffset > 100){
-                document.querySelector('.back-to-top').classList.remove("fadeOut");
-                document.querySelector('.back-to-top').style.display = "block";
-                document.querySelector('.back-to-top').classList.add("fadeIn");
-            }else {
-                document.querySelector('.back-to-top').classList.remove("fadeIn");
-                document.querySelector('.back-to-top').classList.add("fadeOut");
-            }
-        });
-    }
+export default function BackToTop() {
+  const [visible, setVisible] = useState(false);
 
-    render(){
-        return <a href="#" className="back-to-top animated"><i className="fa fa-chevron-up"></i></a>;
-    }
+  // Toggle visibility based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.pageYOffset > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top
+  const onClick = () => {
+    scroll.scrollToTop({ duration: 1500, smooth: 'easeInOutQuart' });
+  };
+
+  return (
+    <button
+      className={`back-to-top animated ${visible ? 'fadeIn' : 'fadeOut'}`}
+      style={{ display: visible ? 'block' : 'none' }}
+      onClick={onClick}
+      aria-label="Back to top"
+    >
+      <i className="fa fa-chevron-up " />
+    </button>
+  );
 }
-
-export default BackToTop;
-
-

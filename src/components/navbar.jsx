@@ -1,155 +1,113 @@
-import React, { useEffect } from "react";
-import $ from "jquery";
-import { useTheme } from "../context/ThemeContext.jsx";
-import logo2 from "../img/logo2.png";
-import logox from "../img/logo.png";
-import mahelogo from "../img/sponsor_pics/mahe.png"
+// src/components/Navbar.jsx
+import React, { useEffect, useState } from 'react';
+import { Link, animateScroll as scroll } from 'react-scroll';
+import { Link as RouterLink,useLocation, useNavigate } from 'react-router-dom';
 
-function Navbar() {
-  const [logo, setLogo] = React.useState(logox);
+import { useTheme } from '../context/ThemeContext.jsx';
+import logoLight from '../img/logo.png';
+import logoDark from '../img/logo2.png';
+import mahelogo from '../img/sponsor_pics/mahe.png';
+
+export default function Navbar() {
   const { darkMode, toggleDarkMode } = useTheme();
+  const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const nav = $("nav");
-    let navHeight = nav.outerHeight();
+    const checkScreenSize = () => setIsMobile(window.innerWidth < 768);
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+  useEffect(() => {
+  if (!isMobile) {
+    setNavCollapsed(true); // reset when moving to desktop
+  }
+}, [isMobile]);
 
-    $(".navbar-toggler").on("click", function() {
-      if (!$("#mainNav").hasClass("navbar-reduce")) {
-        $("#mainNav").addClass("navbar-reduce");
-      }
-    });
+  // NEW: track collapse state
+  const [navCollapsed, setNavCollapsed] = useState(true);
 
-    $("body").scrollspy({
-      target: "#mainNav",
-      offset: navHeight
-    });
-
-    $(".js-scroll").on("click", function() {
-      $(".navbar-collapse").collapse("hide");
-    });
-
+  // Handle scroll for navbar style and logo swap
+  useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 50) {
-        document
-          .querySelector(".navbar-expand-md")
-          .classList.add("navbar-reduce");
-        document
-          .querySelector(".navbar-expand-md")
-          .classList.remove("navbar-trans");
-        
-        // Only change to logo2 if not in dark mode
-        if (!darkMode) {
-          setLogo(logo2);
-        } else {
-          // Ensure logox is set when in dark mode, regardless of scroll
-          setLogo(logox);
-        }
-      } else {
-        document
-          .querySelector(".navbar-expand-md")
-          .classList.add("navbar-trans");
-        document
-          .querySelector(".navbar-expand-md")
-          .classList.remove("navbar-reduce");
-        setLogo(logox);
-      }
+      setScrolled(window.pageYOffset > 50);
     };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // initial check
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    window.addEventListener("scroll", handleScroll);
+  // Choose logo based on theme and scroll
+  const logo = darkMode
+    ? logoLight
+    : scrolled
+      ? logoDark
+      : navCollapsed?logoDark:logoDark;//Removing the light logo when scroll is on top 
 
-    // Initial call to set the correct logo based on current scroll position
-    handleScroll();
+  // Scroll to top handler
+  const scrollToTop = () => {
+    scroll.scrollToTop({ duration: 500, smooth: true });
+  };
 
-    $('a.js-scroll[href*="#"]:not([href="#"])').on("click", function() {
-      if (  
-        window.location.pathname.replace(/^\//, "") ===
-          this.pathname.replace(/^\//, "") &&
-        window.location.hostname === this.hostname
-      ) {   
-       
-        var target = $(this.hash);
-        target = target.length
-          ? target
-          : $("[name=" + this.hash.slice(1) + "]");
-        
-        if (target.length) {
-          $("html, body").animate(
-            {
-              scrollTop: target.offset().top - navHeight + 5
-            },
-            1000,
-            "easeInExpo"
-          );
-          return false;
-        }
-      }
-    });
+  
+  // Toggle collapse on hamburger click
+  const toggleNavbar = () => setNavCollapsed(prev => !prev);
 
-    $(".js-scroll").on("click", function() {
-      $(".navbar-collapse").collapse("hide");
-    });
-
-    // Cleanup event listeners when component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      $(".navbar-toggler").off("click");
-      $("body").scrollspy("dispose");
-      $(".js-scroll").off("click");
-      $('a.js-scroll[href*="#"]:not([href="#"])').off("click");
-    };
-  }, [darkMode]); // Keeping original dependency array as requested
-
-  // Add an effect that runs whenever darkMode changes to immediately update the logo
-  useEffect(() => {
-    // If in dark mode, always set logo to logox
-    if (darkMode) {
-      setLogo(logox);
-    } else {
-      // If in light mode, set logo based on scroll position
-      if (window.pageYOffset > 50) {
-        setLogo(logo2);
-      } else {
-        setLogo(logox);
-      }
-    }
-  }, [darkMode]);
+  // Close navbar when a link is clicked
+  const closeNavbar = () => setNavCollapsed(true);
+  
 
   return (
     <nav
-      className="navbar navbar-b navbar-trans navbar-expand-md fixed-top"
+      className={`navbar navbar-b  navbar-expand-md fixed-top ${
+        scrolled ? 'navbar-reduce' : navCollapsed?'navbar-reduce':'navbar-reduce'
+      }`} //Removing the transparent nav functionality
       id="mainNav"
     >
+
+
       <div className="container">
-        <a className="navbar-brand js-scroll" href="#page-top">
-          <img
-            src={logo}
-            alt="logo"
-            style={{ maxWidth: "150px" }}
-          />
-        </a>
-        
+        {/* Logo and Home Link */}
         <button
-          className="navbar-toggler collapsed"
+         onClick={() => {
+          scrollToTop();
+          closeNavbar();
+          }}
+         className="navbar-brand btn p-0 border-0 bg-transparent"
+          aria-label="Home"
+        >
+          <img src={logo} alt="Logo" style={{ maxWidth: '150px' }} />
+        </button>
+        
+
+        {/* Mobile menu toggle */}
+        <button
+          className={`navbar-toggler ${navCollapsed ? 'collapsed' : ''}`}
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarDefault"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarDefault"
           aria-controls="navbarDefault"
-          aria-expanded="false"
+          aria-expanded= {!navCollapsed}
           aria-label="Toggle navigation"
+          onClick={toggleNavbar}
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <div
-          className="navbar-collapse collapse justify-content-center"
-          id="navbarDefault"
-        >
+        
+        {/* Navigation Links */}
+        <div className={`navbar-collapse justify-content-center collapse ${!isMobile? 'show' : !navCollapsed?'show':''}`} id="navbarDefault">
+          
           <ul className="navbar-nav">
+            {/* Dark Mode Toggle Button */}
             <li className="nav-item">
-              <button 
-                onClick={toggleDarkMode}
-                className="nav-link" 
+              <button
+                 onClick={() => { toggleDarkMode(); closeNavbar(); }}
+                className="nav-link"
                 style={{
                   cursor: 'pointer',
                   background: 'none',
@@ -163,43 +121,45 @@ function Navbar() {
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
               </button>
             </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll active" href="#home">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll" href="#about">
-                About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll" href="#work">
-                Team
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll" href="#sponsors">
-                Sponsors
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link js-scroll" href="#contact">
-                Contact
-              </a>
-            </li>
+
+            {/* Section Links */}
+            {['home', 'about', 'team', 'sponsors', 'contact'].map((section) => (
+              <li key={section} className="nav-item">
+                <button
+                  className="nav-link btn bg-transparent border-0"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    closeNavbar();
+                    if (location.pathname === '/') {
+                      
+                      const target = document.getElementById(section);
+                      if (target) {
+                        const offset = document.querySelector("nav")?.offsetHeight || 80;
+                        window.scrollTo({ top: target.offsetTop - offset + 5, behavior: "smooth" });
+                      }
+                    } else {
+                      navigate('/', { state: { scrollTo: section } });
+                    }
+                  }}>
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              </li>
+            ))}
+            {/* Achievements */}
+            <li className="nav-item">  <RouterLink to="/achievements" className="nav-link">Achievements</RouterLink>
+</li>
           </ul>
         </div>
-        <a className="navbar-brand js-scroll" href="#page-top">
-          <img
-            src={mahelogo}
-            alt="logo"
-            style={{ maxWidth: "100px" }}
-          />
-        </a>
+
+        {/* Sponsor Logo */}
+        <button
+          onClick={scrollToTop}
+          className="navbar-brand btn p-0 border-0 bg-transparent"
+          aria-label="Top"
+        >
+          <img src={mahelogo} alt="Sponsor Logo" style={{ maxWidth: '100px' }} />
+        </button>
       </div>
     </nav>
   );
 }
-
-export default Navbar;

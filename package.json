@@ -4,29 +4,29 @@
   "private": true,
   "homepage": "https://loopmit.in",
   "dependencies": {
-    "bootstrap": "^4.6.2",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.7",
     "compose-function": "^3.0.3",
     "emailjs-com": "^3.2.0",
+    "embla-carousel-react": "^8.6.0",
     "gh-pages": "^6.3.0",
-    "jquery": "^3.4.1",
     "lightbox2": "^2.11.0",
+    "lucide-react": "^0.525.0",
     "normalize.css": "^8.0.1",
-    "popper.js": "^1.15.0",
-    "react": "^16.8.6",
-    "react-bootstrap": "^1.6.1",
-    "react-dom": "^16.8.6",
-    "react-scripts": "^5.0.1",
-    "react-typed": "^1.1.2",
-    "sass": "^1.86.0",
+    "react": "19.1.0",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "19.1.0",
+    "react-router": "^7.6.3",
+    "react-router-dom": "^7.6.3",
+    "react-scroll": "^1.9.3",
+    "react-typed": "^2.0.12",
+    "sass": "^1.89.2",
     "typed.js": "^2.0.10"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,5 +42,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "vite": "^7.0.5"
   }
 }

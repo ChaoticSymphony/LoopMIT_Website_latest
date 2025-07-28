@@ -103,8 +103,8 @@ const sponsor = ({ logo, name, url }) => {
       <div className="row justify-content-center">
         <div className="col-12 text-center">
           <h3 className="title-a">Our Sponsors</h3>
-          <p className="subtitle-a">
-                 Fueling innovation together with our valued sponsors.
+                <p className="subtitle-a">
+                    Fueling innovation together with our valued sponsors.
                 </p>
           <div className="line-mf"></div>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import Pod from '../img/pod.jpeg'
+//import Pod from '../img/pod.jpeg'
 import Animation1 from "./animation"
 
 class About extends React.Component {
@@ -28,43 +28,47 @@ class About extends React.Component {
 
   render() {
     return (
-      <section id="about" className="about-mf sect-pt4 route">
-        <div style={{ overflowX: 'hidden' }}>
-            <div className="container">
-              <div className="row">
-                <div className="col-sm-12">
-                  <div className="box-shadow-full about-box">
-                    <div className="title-box-2">
-                      <h5 className="title-center">About Us</h5>
-                    </div>
-          <Animation1 direction="right" delay={0.2}>
-                    <div className="row about-content-row">
-                      <div className="col-md-12 about-text-col">
-                        <div className="about-me pt-4 pt-md-0">
-                          {this.state.about_me.map(content => {
-                            return (
-                              <p className="subtitle-a" key={content.id}>
-                                {content.content}
-                              </p>
-                            );
-                          })}
-                        </div>
-                      </div>
-                      {/* The Image part */}
-                      {/* <div className="col-md-6 about-image-col">
-                        <div className="pod-image-container">
-                          <img src={Pod}  className="pod-image responsive-image" />
-                        </div>
-                      </div> */}
-                    </div>
-          </Animation1>
-                  </div>
-                </div>
+  <section id="about" className="about-mf sect-pt4 route">
+    <div style={{ overflowX: 'hidden' }}>
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-12">
+            <div className="box-shadow-full about-box">
+              <div className="title-box-2 text-center mb-5">
+                <h5 className="title-center">About Us</h5>
               </div>
+
+              <Animation1 direction="right" delay={0.2}>
+                <div className="row about-content-row">
+                  <div className="col-12 about-text-col">
+                    <div className="about-me pt-4 pt-md-0">
+                      {this.state.about_me.map(content => (
+                        <p className="subtitle-a" key={content.id}>
+                          {content.content}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Optional image section */}
+                  {/*
+                  <div className="col-md-6 about-image-col">
+                    <div className="pod-image-container">
+                      <img src={Pod} className="pod-image img-fluid" alt="Pod" />
+                    </div>
+                  </div>
+                  */}
+                </div>
+              </Animation1>
             </div>
+          </div>
         </div>
-      </section>
-    );
+      </div>
+    </div>
+  </section>
+);
+
+    
   }
 }
 
