@@ -1568,6 +1568,8 @@ BUTTON
   border-radius: 50px;
 }
 
+
+
 .dark .card-subtitle{
   color: #e2e9e389;
   background-color: #51e37589;
@@ -1619,7 +1621,6 @@ BUTTON
 }
 
 /* Dark mode */
-
 .dark .card {
   background-color: #1e1e1e;
   

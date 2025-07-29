@@ -5,6 +5,13 @@ import '../style.css'
 import img1 from '../../public/imgs/GHC_images/img_1.jpg'
 import img2 from '../../public/imgs/GHC_images/img_2.jpg'
 import img3 from '../../public/imgs/GHC_images/img_3.jpg'
+import img4 from '../../public/imgs/GHC_images/img_4.jpg'
+import img5 from '../../public/imgs/GHC_images/img_5.jpg'
+import img6 from '../../public/imgs/GHC_images/img_6.jpg'
+import img7 from '../../public/imgs/GHC_images/img_7.jpg'
+import img8 from '../../public/imgs/GHC_images/img_8.jpg'
+import img9 from '../../public/imgs/GHC_images/img_9.jpeg'
+
 import {useTheme} from '../context/ThemeContext'
 
 
@@ -15,11 +22,11 @@ const timelineData = [
     title: "Global Hyperloop Competition",
     period: "Awards • 2025",
     items: [
-      "An annual student-driven engineering challenge to prototype Hyperloop pods designed to reach speeds of 1,000+ km/h. An annual student-driven engineering challenge to prototype Hyperloop pods designed to reach speeds of 1,000+ km/h"
+      "The Global Hyperloop Competition (GHC) is a prestigious, student-led international engineering challenge hosted by IIT Madras, India, focused on advancing research and innovation in Hyperloop technology. We emerged as the overall winners of the competition."
     ],
     images:[
     
-      img1,img2
+      img3,img2,img1,img4
 
     ],
     badgeClass: "bg-success"
@@ -28,11 +35,11 @@ const timelineData = [
     title: "European Hyperloop Week",
     period: "Qualified • 2025",
     items: [
-      "Specialized in Web Technologies.Graduation project: Real-time monitoring dashboard for smart farms.GPA: 9.2/10"
+      "European Hyperloop Week (EHW) is the largest annual student‑led Hyperloop competition and innovation conference in the world, focused on advancing Hyperloop technology. We cleared all the technical and the video rounds."
     ],
     images:[
     
-      img1,img3
+      img8
 
     ]
   },
