@@ -1,10 +1,9 @@
-// vite.config.js
 import { defineConfig } from 'vite';
-
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 
 export default defineConfig({
+  base: '/LoopMIT_Website_latest/', // 👈 ADD THIS LINE
   plugins: [react()],
   server: {
     port: 3000,
